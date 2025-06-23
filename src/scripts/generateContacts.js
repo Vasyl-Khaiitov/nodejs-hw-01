@@ -1,6 +1,6 @@
-import fs from 'node:fs/promises';
-import { PATH_DB } from '../constants/contacts.js';
 import { createFakeContact } from '../utils/createFakeContact.js';
+import { readContacts } from '../utils/readContacts.js';
+import { writeContacts } from '../utils/writeContacts.js';
 
 const generateContacts = async (number) => {
   try {
@@ -8,12 +8,10 @@ const generateContacts = async (number) => {
     for (let i = 0; i < number; i++) {
       newContacts.push(createFakeContact());
     }
-    const readContacts = await fs.readFile(PATH_DB, 'utf-8');
-    const dataParse = JSON.parse(readContacts);
-    const updateContacts = [...dataParse, ...newContacts];
-    const dateStringify = JSON.stringify(updateContacts, null, 2);
+    const data = await readContacts();
+    const updateContacts = [...data, ...newContacts];
 
-    await fs.writeFile(PATH_DB, dateStringify, 'utf-8');
+    await writeContacts(updateContacts);
     console.log('Generate contacts success:', number);
   } catch (error) {
     console.log('Error generate contacts:', error.message);
