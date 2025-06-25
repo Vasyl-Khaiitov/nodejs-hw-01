@@ -3,10 +3,10 @@ import { readContacts } from '../utils/readContacts.js';
 export const getAllContacts = async () => {
   try {
     const data = await readContacts();
-    return data.length;
+    return data;
   } catch (error) {
     console.error('File reading error:', error);
-    return 0;
+    return [];
   }
 };
 

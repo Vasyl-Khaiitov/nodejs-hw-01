@@ -9,7 +9,6 @@ export const removeAllContacts = async () => {
       return;
     }
     await writeContacts([]);
-    console.log('All contacts removed.');
   } catch (error) {
     console.log('Error remove all contacts:', error.message);
   }

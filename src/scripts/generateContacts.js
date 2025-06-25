@@ -12,7 +12,6 @@ const generateContacts = async (number) => {
     const updateContacts = [...data, ...newContacts];
 
     await writeContacts(updateContacts);
-    console.log('Generate contacts success:', number);
   } catch (error) {
     console.log('Error generate contacts:', error.message);
   }

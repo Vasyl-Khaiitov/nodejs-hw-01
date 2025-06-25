@@ -8,7 +8,6 @@ export const addOneContact = async () => {
     const dataContact = await readContacts();
     dataContact.push(newContact);
     await writeContacts(dataContact);
-    console.log('Success add one contact:', newContact);
   } catch (error) {
     console.log('Error create one contact:', error.message);
   }

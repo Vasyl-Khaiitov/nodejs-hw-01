@@ -10,7 +10,6 @@ export const removeLastContact = async () => {
     }
     const remove = data.pop();
     await writeContacts(data);
-    console.log('Success remove last contact:', remove);
   } catch (error) {
     console.log('Error remove last contact:', error.message);
   }
